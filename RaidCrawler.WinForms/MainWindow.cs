@@ -1434,7 +1434,7 @@ public partial class MainWindow : Form
             RaidBlockOffsetBase = await ConnectionWrapper.Connection
                 .PointerAll(RaidBlockPointerBase.ToArray(), token)
                 .ConfigureAwait(false);
-            Log($"RaidBlockOffsetBase: {RaidBlockOffsetBase:X8}");
+            ConnectionWrapper.Connection.Log($"RaidBlockOffsetBase: {RaidBlockOffsetBase:X8}");
 
             RaidBlockOffsetKitakami = await ConnectionWrapper.Connection
                 .PointerAll(RaidBlockPointerKitakami.ToArray(), token)
