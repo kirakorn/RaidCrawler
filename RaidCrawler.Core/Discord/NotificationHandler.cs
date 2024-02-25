@@ -102,6 +102,9 @@ public class NotificationHandler(IWebhookConfig config)
         var movestr = string.Concat(moves.Where(z => z != 0).Select(z => $"{strings.Move[z]}ㅤ\n")).Trim();
         var extramoves = string.Concat(encounter.ExtraMoves.Where(z => z != 0).Select(z => $"{strings.Move[z]}ㅤ\n")).Trim();
         var area = $"{Areas.GetArea((int)(raid.Area - 1), raid.MapParent)}" + (config.ToggleDen ? $" [Den {raid.Den}]ㅤ" : "ㅤ");
+        var seed = $"{raid.Seed:X8}";
+        var ec = $"{raid.EC:X8}";
+        var pid = $"{raid.PID:X8}";
         var rewards = GetRewards(rewardsList);
         var SuccessWebHook = new
         {
@@ -173,6 +176,24 @@ public class NotificationHandler(IWebhookConfig config)
                         {
                             name = "Filter Name",
                             value = filter.Name,
+                            inline = true,
+                        },
+                        new
+                        {
+                            name = "Seed",
+                            value = seed,
+                            inline = true,
+                        },
+                        new
+                        {
+                            name = "EC",
+                            value = ec,
+                            inline = true,
+                        },
+                        new
+                        {
+                            name = "PID",
+                            value = pid,
                             inline = true,
                         },
                         new
